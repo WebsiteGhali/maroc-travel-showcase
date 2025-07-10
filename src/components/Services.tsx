@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Plane, Building, Globe, MapPin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -27,7 +26,7 @@ const Services = () => {
       icon: MapPin,
       title: "Omra et Hajj",
       description: "Organisation complète de votre pèlerinage. Vols, hébergement proche des lieux saints et assistance dédiée. Un voyage spirituel dans les meilleures conditions.",
-      image: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=400&h=300&fit=crop"
     }
   ];
 
