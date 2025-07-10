@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
@@ -26,13 +26,15 @@
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
     --ring: 24 100% 50%;
-    --radius: 0.5rem;
+    --radius: 1rem;
     
-    /* Custom Moroccan colors */
-    --terracotta: 16 100% 66%;
-    --sand: 35 44% 85%;
-    --desert: 25 39% 74%;
-    --cream: 60 9.1% 97.8%;
+    /* Premium Moroccan Color Palette */
+    --terracotta: 16 85% 60%;
+    --sand: 35 40% 88%;
+    --desert: 25 35% 75%;
+    --cream: 45 15% 96%;
+    --gold: 43 74% 66%;
+    --deep-blue: 220 39% 11%;
   }
 
   .dark {
@@ -63,28 +65,55 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
   }
 }
 
 @layer components {
-  .moroccan-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f4a261' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  .premium-gradient {
+    background: linear-gradient(135deg, hsl(var(--terracotta)) 0%, hsl(var(--gold)) 100%);
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .shadow-premium {
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
   }
   
   .fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeInUp 0.8s ease-out forwards;
   }
   
   .slide-up {
-    animation: slideUp 0.8s ease-out forwards;
+    animation: slideUp 1s ease-out forwards;
+  }
+
+  .premium-card {
+    @apply bg-white/95 backdrop-blur-sm border border-white/20 shadow-premium rounded-3xl;
+  }
+
+  .premium-text-gradient {
+    @apply bg-gradient-to-r from-terracotta via-orange-500 to-amber-600 bg-clip-text text-transparent;
   }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -95,10 +124,41 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(60px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--sand));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--terracotta));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold));
 }
