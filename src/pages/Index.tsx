@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import PremiumNavigation from '@/components/PremiumNavigation';
 import PremiumHero from '@/components/PremiumHero';
@@ -6,7 +5,6 @@ import PremiumServices from '@/components/PremiumServices';
 import PremiumAbout from '@/components/PremiumAbout';
 import DiscoverMorocco from '@/components/DiscoverMorocco';
 import PremiumGallery from '@/components/PremiumGallery';
-import Testimonials from '@/components/Testimonials';
 import PremiumContact from '@/components/PremiumContact';
 import PremiumFooter from '@/components/PremiumFooter';
 
@@ -69,7 +67,6 @@ const Index = () => {
       <PremiumAbout />
       <DiscoverMorocco />
       <PremiumGallery />
-      <Testimonials />
       <PremiumContact />
       <PremiumFooter />
     </div>
