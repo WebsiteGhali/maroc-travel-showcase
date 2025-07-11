@@ -111,7 +111,8 @@
   }
 
   .premium-card {
-    @apply bg-white/98 backdrop-blur-lg border border-white/30 shadow-3xl rounded-3xl;
+    @apply bg-white backdrop-blur-lg border border-white/30 rounded-3xl;
+    background: rgba(255, 255, 255, 0.98);
     box-shadow: 
       0 25px 50px -12px rgba(0, 0, 0, 0.15),
       0 0 0 1px rgba(255, 255, 255, 0.2),
@@ -119,7 +120,7 @@
   }
 
   .premium-text-gradient {
-    @apply bg-gradient-to-r from-terracotta via-orange-500 to-amber-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 bg-clip-text text-transparent;
   }
 
   /* Enhanced animations */

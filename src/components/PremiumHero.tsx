@@ -21,7 +21,7 @@ const PremiumHero = () => {
     <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Premium Background with Parallax Effect */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10s] ease-out"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10000ms] ease-out"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1920&h=1080&fit=crop&q=80')`,
           transform: isLoaded ? 'scale(1.05)' : 'scale(1)'
