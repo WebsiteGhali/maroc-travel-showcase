@@ -47,8 +47,9 @@ const Index = () => {
       const parallaxElements = document.querySelectorAll('[data-parallax]');
       
       parallaxElements.forEach((element) => {
+        const htmlElement = element as HTMLElement;
         const rate = scrolled * -0.5;
-        element.style.transform = `translateY(${rate}px)`;
+        htmlElement.style.transform = `translateY(${rate}px)`;
       });
     };
 
