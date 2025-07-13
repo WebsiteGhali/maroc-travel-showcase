@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Sparkles, MapPin, Camera, Mail } from 'lucide-react';
+import { Menu, X, Phone, ArrowRight, Globe, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const PremiumNavigation = () => {
@@ -10,7 +10,7 @@ const PremiumNavigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 30);
       
       // Active section detection
       const sections = ['accueil', 'services', 'apropos', 'maroc', 'galerie', 'contact'];
@@ -18,7 +18,7 @@ const PremiumNavigation = () => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 200 && rect.bottom >= 200;
+          return rect.top <= 150 && rect.bottom >= 150;
         }
         return false;
       });
@@ -42,211 +42,210 @@ const PremiumNavigation = () => {
   };
 
   const menuItems = [
-    { label: 'Accueil', id: 'accueil', icon: Sparkles },
-    { label: 'Services', id: 'services', icon: MapPin },
-    { label: 'À propos', id: 'apropos', icon: Sparkles },
-    { label: 'Découvrir le Maroc', id: 'maroc', icon: MapPin },
-    { label: 'Galerie', id: 'galerie', icon: Camera },
-    { label: 'Contact', id: 'contact', icon: Mail }
+    { label: 'Accueil', id: 'accueil' },
+    { label: 'Services', id: 'services' },
+    { label: 'À propos', id: 'apropos' },
+    { label: 'Maroc', id: 'maroc' },
+    { label: 'Galerie', id: 'galerie' },
+    { label: 'Contact', id: 'contact' }
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out ${
-      isScrolled 
-        ? 'bg-white/80 backdrop-blur-2xl shadow-[0_8px_40px_rgb(0,0,0,0.12)] border-b border-white/30' 
-        : 'bg-gradient-to-b from-black/20 via-black/10 to-transparent backdrop-blur-sm'
-    }`}>
-      
-      {/* Luxury accent line */}
-      <div className={`h-px bg-gradient-to-r from-transparent via-terracotta/50 to-transparent transition-opacity duration-700 ${
-        isScrolled ? 'opacity-100' : 'opacity-0'
+    <>
+      {/* Luxury backdrop blur overlay */}
+      <div className={`fixed top-0 left-0 right-0 h-32 z-40 transition-all duration-1000 ${
+        isScrolled 
+          ? 'bg-gradient-to-b from-white/80 via-white/60 to-transparent backdrop-blur-xl' 
+          : 'bg-gradient-to-b from-black/30 via-black/10 to-transparent'
       }`} />
       
-      <div className="container mx-auto px-8">
-        <div className="flex items-center justify-between h-24">
-          
-          {/* Ultra Premium Logo */}
-          <div className="flex items-center space-x-6 group cursor-pointer" onClick={() => scrollToSection('accueil')}>
-            <div className="relative">
-              <div className="w-16 h-16 bg-gradient-to-br from-terracotta via-orange-500 to-amber-600 rounded-3xl flex items-center justify-center shadow-[0_12px_40px_rgba(213,89,49,0.4)] group-hover:shadow-[0_16px_50px_rgba(213,89,49,0.6)] transition-all duration-500 group-hover:scale-110">
-                <span className="text-white font-bold text-xl tracking-wider font-playfair">EV</span>
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-amber-400 rounded-full animate-pulse opacity-75"></div>
-            </div>
-            <div className="flex flex-col">
-              <span className={`text-3xl font-bold tracking-tight font-playfair transition-colors duration-300 ${
-                isScrolled ? 'text-slate-800' : 'text-white'
-              }`}>
-                Événement Voyage
-              </span>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-terracotta rounded-full animate-pulse"></div>
-                <span className="text-sm text-terracotta font-medium tracking-wider uppercase">
-                  Excellence & Prestige
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Ultra Premium Desktop Menu */}
-          <div className="hidden xl:flex items-center space-x-2">
-            {menuItems.map((item) => {
-              const isActive = activeItem === item.id;
-              const IconComponent = item.icon;
-              
-              return (
-                <button 
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`group relative px-6 py-4 rounded-2xl transition-all duration-500 hover:scale-105 ${
-                    isActive 
-                      ? 'bg-terracotta/10 shadow-lg backdrop-blur-sm' 
-                      : 'hover:bg-white/10 hover:backdrop-blur-sm hover:shadow-lg'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <IconComponent className={`w-4 h-4 transition-all duration-300 ${
-                      isScrolled 
-                        ? isActive ? 'text-terracotta' : 'text-slate-600 group-hover:text-terracotta'
-                        : isActive ? 'text-terracotta' : 'text-white/80 group-hover:text-white'
-                    }`} />
-                    <span className={`font-medium text-lg transition-all duration-300 ${
-                      isScrolled 
-                        ? isActive ? 'text-terracotta' : 'text-slate-700 group-hover:text-terracotta'
-                        : isActive ? 'text-terracotta' : 'text-white/90 group-hover:text-white'
-                    }`}>
-                      {item.label}
-                    </span>
-                  </div>
-                  
-                  {/* Luxury underline */}
-                  <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-terracotta via-orange-400 to-amber-500 rounded-full transition-all duration-500 ${
-                    isActive ? 'w-12 opacity-100' : 'w-0 opacity-0 group-hover:w-8 group-hover:opacity-60'
-                  }`} />
-                  
-                  {/* Glow effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-r from-terracotta/20 via-orange-400/20 to-amber-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl ${
-                    isActive ? 'opacity-30' : ''
-                  }`} />
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Ultra Premium CTA Buttons */}
-          <div className="hidden xl:flex items-center space-x-4">
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              variant="outline"
-              className={`group relative overflow-hidden border-2 px-8 py-4 rounded-2xl font-semibold transition-all duration-500 hover:scale-105 ${
-                isScrolled 
-                  ? 'border-terracotta/30 text-terracotta hover:bg-terracotta hover:text-white hover:border-terracotta shadow-lg'
-                  : 'border-white/30 text-white hover:bg-white hover:text-slate-800 hover:border-white backdrop-blur-sm'
-              }`}
-            >
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                <span className="font-medium">Nous Appeler</span>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-terracotta/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </Button>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
+        isScrolled 
+          ? 'bg-white/90 backdrop-blur-2xl shadow-[0_8px_60px_rgba(0,0,0,0.08)]' 
+          : 'bg-transparent'
+      }`}>
+        
+        {/* Ultra-thin luxury accent line */}
+        <div className={`h-px bg-gradient-to-r from-transparent via-terracotta/60 to-transparent transition-all duration-1000 ${
+          isScrolled ? 'opacity-100' : 'opacity-0'
+        }`} />
+        
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="flex items-center justify-between h-28">
             
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              className="group relative overflow-hidden bg-gradient-to-r from-terracotta via-orange-500 to-amber-600 hover:from-orange-600 hover:via-red-500 hover:to-amber-700 text-white px-10 py-4 rounded-2xl font-semibold transition-all duration-500 transform hover:scale-105 shadow-[0_12px_40px_rgba(213,89,49,0.4)] hover:shadow-[0_16px_50px_rgba(213,89,49,0.6)]"
+            {/* Sophisticated Logo */}
+            <div 
+              className="flex items-center space-x-5 group cursor-pointer" 
+              onClick={() => scrollToSection('accueil')}
             >
-              <div className="flex items-center space-x-3 relative z-10">
-                <Sparkles className="w-5 h-5 group-hover:rotate-180 transition-transform duration-700" />
-                <span className="font-bold tracking-wide">Réserver Maintenant</span>
+              <div className="relative">
+                {/* Main logo container */}
+                <div className="w-14 h-14 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 rounded-[1rem] flex items-center justify-center shadow-[0_8px_32px_rgba(15,23,42,0.3)] group-hover:shadow-[0_12px_40px_rgba(15,23,42,0.4)] transition-all duration-500 group-hover:scale-105 border border-white/10">
+                  <span className="text-white font-bold text-xl tracking-wider font-playfair">EV</span>
+                </div>
+                {/* Luxury accent dot */}
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-terracotta rounded-full shadow-lg animate-pulse"></div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </Button>
-          </div>
-
-          {/* Ultra Premium Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`xl:hidden p-4 rounded-2xl transition-all duration-300 hover:scale-110 ${
-              isScrolled 
-                ? 'bg-terracotta/10 hover:bg-terracotta/20' 
-                : 'bg-white/10 hover:bg-white/20 backdrop-blur-sm'
-            }`}
-          >
-            <div className="relative">
-              {isOpen ? (
-                <X size={28} className={`transition-all duration-300 ${
-                  isScrolled ? 'text-terracotta' : 'text-white'
-                }`} />
-              ) : (
-                <Menu size={28} className={`transition-all duration-300 ${
-                  isScrolled ? 'text-terracotta' : 'text-white'
-                }`} />
-              )}
+              
+              <div className="flex flex-col">
+                <span className={`text-2xl font-bold tracking-tight font-playfair transition-all duration-500 ${
+                  isScrolled ? 'text-slate-900' : 'text-white drop-shadow-lg'
+                }`}>
+                  Événement Voyage
+                </span>
+                <div className="flex items-center space-x-2 mt-1">
+                  <Award className="w-3 h-3 text-terracotta" />
+                  <span className="text-xs text-terracotta font-medium tracking-widest uppercase opacity-80">
+                    Luxury Travel Concierge
+                  </span>
+                </div>
+              </div>
             </div>
-          </button>
-        </div>
 
-        {/* Ultra Premium Mobile Menu */}
-        {isOpen && (
-          <div className="xl:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-2xl border-t border-terracotta/20 shadow-[0_20px_60px_rgba(0,0,0,0.15)] animate-fade-in">
-            <div className="px-8 py-10 space-y-2">
+            {/* Refined Desktop Menu */}
+            <div className="hidden lg:flex items-center">
               {menuItems.map((item, index) => {
-                const IconComponent = item.icon;
                 const isActive = activeItem === item.id;
                 
                 return (
-                  <button 
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`group w-full text-left p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] ${
-                      isActive 
-                        ? 'bg-terracotta/10 shadow-lg' 
-                        : 'hover:bg-terracotta/5 hover:shadow-md'
-                    }`}
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="flex items-center space-x-4">
-                      <div className={`p-3 rounded-xl transition-all duration-300 ${
-                        isActive 
-                          ? 'bg-terracotta/20 text-terracotta' 
-                          : 'bg-slate-100 text-slate-600 group-hover:bg-terracotta/20 group-hover:text-terracotta'
-                      }`}>
-                        <IconComponent className="w-5 h-5" />
-                      </div>
-                      <span className={`text-xl font-medium transition-colors duration-300 ${
-                        isActive 
-                          ? 'text-terracotta' 
-                          : 'text-slate-700 group-hover:text-terracotta'
+                  <div key={item.id} className="relative mx-1">
+                    <button 
+                      onClick={() => scrollToSection(item.id)}
+                      className={`group relative px-6 py-4 transition-all duration-400 hover:scale-105 ${
+                        isActive ? 'scale-105' : ''
+                      }`}
+                    >
+                      <span className={`font-medium text-base tracking-wide transition-all duration-400 ${
+                        isScrolled 
+                          ? isActive 
+                            ? 'text-terracotta' 
+                            : 'text-slate-800 group-hover:text-terracotta'
+                          : isActive 
+                            ? 'text-terracotta drop-shadow-sm' 
+                            : 'text-white/95 group-hover:text-white drop-shadow-sm'
                       }`}>
                         {item.label}
                       </span>
-                    </div>
-                  </button>
+                      
+                      {/* Sophisticated underline */}
+                      <div className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 h-0.5 bg-terracotta rounded-full transition-all duration-500 ${
+                        isActive ? 'w-8 opacity-100' : 'w-0 opacity-0 group-hover:w-6 group-hover:opacity-70'
+                      }`} />
+                      
+                      {/* Subtle glow effect */}
+                      {isActive && (
+                        <div className="absolute inset-0 bg-terracotta/5 rounded-xl blur-xl opacity-60" />
+                      )}
+                    </button>
+                  </div>
                 );
               })}
+            </div>
+
+            {/* Luxury Action Buttons */}
+            <div className="hidden lg:flex items-center space-x-4">
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                variant="ghost"
+                className={`group relative overflow-hidden px-6 py-3 rounded-xl font-medium transition-all duration-500 hover:scale-105 border border-transparent hover:border-terracotta/20 ${
+                  isScrolled 
+                    ? 'text-slate-700 hover:text-terracotta hover:bg-terracotta/5' 
+                    : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
+                }`}
+              >
+                <div className="flex items-center space-x-2 relative z-10">
+                  <Phone className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+                  <span>Contact</span>
+                </div>
+              </Button>
               
-              <div className="pt-8 space-y-4">
-                <Button 
-                  onClick={() => scrollToSection('contact')}
-                  variant="outline"
-                  className="w-full border-2 border-terracotta/30 text-terracotta hover:bg-terracotta hover:text-white py-6 rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-[1.02]"
-                >
-                  <Phone className="w-5 h-5 mr-3" />
-                  Nous Appeler
-                </Button>
-                <Button 
-                  onClick={() => scrollToSection('contact')}
-                  className="w-full bg-gradient-to-r from-terracotta via-orange-500 to-amber-600 text-white py-6 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-[1.02] shadow-lg"
-                >
-                  <Sparkles className="w-5 h-5 mr-3" />
-                  Réserver Maintenant
-                </Button>
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                className="group relative overflow-hidden bg-gradient-to-r from-terracotta via-terracotta to-orange-600 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-500 transform hover:scale-105 shadow-[0_8px_32px_rgba(213,89,49,0.3)] hover:shadow-[0_12px_40px_rgba(213,89,49,0.4)]"
+              >
+                <div className="flex items-center space-x-2 relative z-10">
+                  <Globe className="w-4 h-4" />
+                  <span className="tracking-wide">Réserver</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              </Button>
+            </div>
+
+            {/* Refined Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`lg:hidden p-3 rounded-xl transition-all duration-300 hover:scale-110 ${
+                isScrolled 
+                  ? 'bg-slate-100 hover:bg-slate-200' 
+                  : 'bg-white/10 hover:bg-white/20 backdrop-blur-sm'
+              }`}
+            >
+              {isOpen ? (
+                <X size={24} className={`transition-all duration-300 ${
+                  isScrolled ? 'text-slate-800' : 'text-white'
+                }`} />
+              ) : (
+                <Menu size={24} className={`transition-all duration-300 ${
+                  isScrolled ? 'text-slate-800' : 'text-white'
+                }`} />
+              )}
+            </button>
+          </div>
+
+          {/* Luxury Mobile Menu */}
+          {isOpen && (
+            <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] border-t border-slate-200/50 animate-fade-in">
+              <div className="px-8 py-8">
+                <div className="space-y-1">
+                  {menuItems.map((item, index) => {
+                    const isActive = activeItem === item.id;
+                    
+                    return (
+                      <button 
+                        key={item.id}
+                        onClick={() => scrollToSection(item.id)}
+                        className={`group w-full text-left p-4 rounded-xl transition-all duration-300 hover:scale-[1.01] animate-fade-in ${
+                          isActive 
+                            ? 'bg-terracotta/10 text-terracotta' 
+                            : 'hover:bg-slate-50 text-slate-800 hover:text-terracotta'
+                        }`}
+                        style={{ animationDelay: `${index * 50}ms` }}
+                      >
+                        <span className="text-lg font-medium tracking-wide">
+                          {item.label}
+                        </span>
+                        {isActive && (
+                          <div className="w-6 h-0.5 bg-terracotta rounded-full mt-2" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+                
+                <div className="pt-6 space-y-3 border-t border-slate-200/50 mt-6">
+                  <Button 
+                    onClick={() => scrollToSection('contact')}
+                    variant="outline"
+                    className="w-full border border-slate-300 text-slate-700 hover:bg-slate-50 hover:text-terracotta hover:border-terracotta/30 py-4 rounded-xl font-medium text-base transition-all duration-300"
+                  >
+                    <Phone className="w-4 h-4 mr-2" />
+                    Nous Contacter
+                  </Button>
+                  <Button 
+                    onClick={() => scrollToSection('contact')}
+                    className="w-full bg-gradient-to-r from-terracotta to-orange-600 text-white py-4 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    <Globe className="w-4 h-4 mr-2" />
+                    Réserver Maintenant
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
-    </nav>
+          )}
+        </div>
+      </nav>
+    </>
   );
 };
 

@@ -19,18 +19,30 @@ const PremiumHero = () => {
 
   return (
     <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Premium Background with Parallax Effect */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10000ms] ease-out"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1920&h=1080&fit=crop&q=80')`,
-          transform: isLoaded ? 'scale(1.05)' : 'scale(1)'
-        }}
-      />
-      
-      {/* Elegant Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-terracotta/30 via-transparent to-desert/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+      {/* Stunning Background with Multiple Layers */}
+      <div className="absolute inset-0">
+        {/* Main Hero Image - Luxury Moroccan Architecture */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10000ms] ease-out"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1920&h=1080&fit=crop&q=80')`,
+            transform: isLoaded ? 'scale(1.05)' : 'scale(1)'
+          }}
+        />
+        
+        {/* Beautiful overlay for "Voyagez Autrement" - Moroccan Desert/Architecture */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 mix-blend-overlay"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1544737151-6e4b9e8e4b8b?w=1920&h=1080&fit=crop&q=80')`
+          }}
+        />
+        
+        {/* Premium gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/20 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-slate-900/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-terracotta/20 via-transparent to-desert/15" />
+      </div>
       
       {/* Floating Geometric Elements */}
       <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-gold/20 to-terracotta/20 rounded-full blur-3xl animate-pulse" />
